@@ -15,10 +15,12 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useUserStore } from '../store/userStore';
+import { useClickStore } from '../store/clickStore';
 
 const RegisterScreen = () => {
   const router = useRouter();
   const setUser = useUserStore((state) => state.setUser);
+  const resetCount = useClickStore((state) => state.resetCount);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -74,6 +76,8 @@ const RegisterScreen = () => {
 
   const handleRegister = () => {
     if (validateForm()) {
+    // const resetCount = useClickStore.getState().resetCount;
+        resetCount();
       setUser({
         fullName: formData.fullName,
         email: formData.email

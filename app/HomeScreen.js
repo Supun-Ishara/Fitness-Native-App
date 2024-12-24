@@ -18,62 +18,42 @@ import { useUserStore } from '../store/userStore';
 const equipmentData = [
  {
    id: '1',
-   title: 'Assisted Equipment',
- //  description: 'Treadmill with advanced features for cardio training',
    image: require('../assets/images/equipment1.jpg'),
  },
  {
    id: '2',
-   title: 'Resistance Tools',
- //  description: 'Professional rowing machine for full-body workout',
    image: require('../assets/images/equipment2.webp'),
  },
  {
    id: '3',
-   title: 'Free Weights',
-  // description: 'High-performance exercise bike with digital display',
    image: require('../assets/images/equipment3.jpg'),
  },
  {
    id: '4',
-   title: 'Strength Machines',
-  // description: 'Weight bench with multiple adjustment positions',
    image: require('../assets/images/equipment4.webp'),
  },
  {
    id: '5',
-   title: 'Core/Balance Tools',
-// description: 'Cross trainer for low-impact cardio workouts',
    image: require('../assets/images/equipment5.webp'),
  },
  {
    id: '6',
-   title: 'Cable Machine',
-  // description: 'Smith machine for safe weightlifting exercises',
    image: require('../assets/images/equipment6.jpg'),
  },
  {
    id: '7',
-   title: 'CrossFit Equipment',
- //  description: 'Cable machine for versatile resistance training',
    image: require('../assets/images/equipment7.jpg'),
  },
  {
    id: '8',
-   title: 'Cardio Equipment',
-  // description: 'Leg press machine for lower body strength',
    image: require('../assets/images/equipment8.webp'),
  },
  {
    id: '9',
-   title: 'Stretching and Mobility:',
-  // description: 'Dumbbells rack with various weight options',
    image: require('../assets/images/equipment9.webp'),
  },
  {
    id: '10',
-   title: 'Plyometric and Functional Equipment',
-  // description: 'Multi-functional power rack for strength training',
    image: require('../assets/images/equipment10.jpg'),
  },
 ];
@@ -107,7 +87,7 @@ const HomeScreen = () => {
        id: (index + 1).toString(),
        title: `Equipment ${index + 1}`,
        description: `${equipment} - Professional fitness equipment for your workout needs`,
-       image: equipmentData[index].image, // Keep using local images
+       image: equipmentData[index].image,
        status: getRandomStatus(),
        lastUsed: getRandomTimeUsed(),
      }));
@@ -174,10 +154,16 @@ const HomeScreen = () => {
  return (
    <SafeAreaView style={styles.container}>
      <View style={styles.header}>
-       <View>
-         <Text style={styles.headerTitle}>Equipment</Text>
-         <Text style={styles.welcomeText}>Welcome{user?.fullName ? `, ${user.fullName}` : ''}</Text>
-       </View>
+
+ <View>
+    <Text style={styles.headerTitle}>Equipment</Text>
+    <Text style={styles.welcomeText}>
+      Welcome{user?.fullName ? `, ${user.fullName}` : ''}
+    </Text>
+    {user?.email && (
+      <Text style={styles.emailText}>{user.email}</Text>
+    )}
+  </View>
        <View style={styles.profileContainer}>
          <TouchableOpacity style={styles.profileButton}>
            <Ionicons name="person-circle-outline" size={wp('8%')} color="#007AFF" />
@@ -364,6 +350,8 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+
+
 
 
 

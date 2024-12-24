@@ -22,3 +22,24 @@ export const useClickStore = create(
     }
   )
 );
+
+
+//import { create } from 'zustand'
+//
+//export const useClickStore = create((set) => ({
+//  clickCount: 0,
+//  itemClicks: {},
+//  incrementClick: (itemId) =>
+//    set((state) => ({
+//      clickCount: state.clickCount + 1,
+//      itemClicks: {
+//        ...state.itemClicks,
+//        [itemId]: (state.itemClicks[itemId] || 0) + 1,
+//      },
+//    })),
+//  resetClicks: () =>
+//    set({
+//      clickCount: 0,
+//      itemClicks: {},
+//    }),
+//}));
